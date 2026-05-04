@@ -6,7 +6,7 @@ import { placeIcon, userIcon } from '../components/MapMarkers'
 import BottomSheet from '../components/BottomSheet'
 import PlaceCard from '../components/PlaceCard'
 import PlaceDetail from '../components/PlaceDetail'
-import { useAuth } from '../lib/auth'
+import { useAuth } from '../lib/auth-context'
 
 const CATEGORIES = ['Nearby', 'Food', 'Coffee', 'Museums', 'Parks', 'Nightlife']
 

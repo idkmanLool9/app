@@ -4,7 +4,7 @@ import { ChevronLeft } from 'lucide-react'
 import StatusBar from '../components/StatusBar'
 import Input from '../components/Input'
 import PrimaryButton from '../components/PrimaryButton'
-import { useAuth } from '../lib/auth'
+import { useAuth } from '../lib/auth-context'
 
 export default function Register() {
   const { signUp } = useAuth()

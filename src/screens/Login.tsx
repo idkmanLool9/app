@@ -6,7 +6,7 @@ import Input from '../components/Input'
 import PrimaryButton from '../components/PrimaryButton'
 import SocialButton from '../components/SocialButton'
 import { AppleIcon, GoogleIcon } from '../components/SocialIcons'
-import { useAuth } from '../lib/auth'
+import { useAuth } from '../lib/auth-context'
 
 export default function Login() {
   const { signIn } = useAuth()

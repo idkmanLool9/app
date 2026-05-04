@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { Bell, ChevronRight, HelpCircle, LogOut, Moon, Settings, Shield } from 'lucide-react'
 import StatusBar from '../components/StatusBar'
 import Avatar from '../components/Avatar'
-import { useAuth } from '../lib/auth'
+import { useAuth } from '../lib/auth-context'
 
 export default function Profile() {
   const { user, signOut } = useAuth()

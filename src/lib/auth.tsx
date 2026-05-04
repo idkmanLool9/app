@@ -1,18 +1,5 @@
-import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from 'react'
-
-type User = {
-  name: string
-  email: string
-}
-
-type AuthContextValue = {
-  user: User | null
-  signIn: (email: string) => void
-  signUp: (name: string, email: string) => void
-  signOut: () => void
-}
-
-const AuthContext = createContext<AuthContextValue | null>(null)
+import { useCallback, useMemo, useState, type ReactNode } from 'react'
+import { AuthContext, type AuthContextValue, type User } from './auth-context'
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(() => {
@@ -26,8 +13,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const persist = useCallback((u: User | null) => {
     setUser(u)
-    if (u) localStorage.setItem('drift.user', JSON.stringify(u))
-    else localStorage.removeItem('drift.user')
+    try {
+      if (u) localStorage.setItem('drift.user', JSON.stringify(u))
+      else localStorage.removeItem('drift.user')
+    } catch {
+      // localStorage may be unavailable (e.g. sandboxed iframe)
+    }
   }, [])
 
   const value = useMemo<AuthContextValue>(
@@ -41,10 +32,4 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   )
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
-}
-
-export function useAuth() {
-  const ctx = useContext(AuthContext)
-  if (!ctx) throw new Error('useAuth must be used inside AuthProvider')
-  return ctx
 }
