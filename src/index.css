@@ -1,0 +1,82 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --color-bg: #0B0B12;
+  --color-bg-soft: #11111A;
+  --color-surface: #16161F;
+  --color-surface-2: #1C1C28;
+  --color-surface-3: #232333;
+  --color-border: #26263A;
+  --color-border-soft: #1E1E2C;
+
+  --color-text: #FFFFFF;
+  --color-text-2: #B5B5C3;
+  --color-text-3: #6F6F84;
+  --color-text-4: #4A4A5C;
+
+  --color-violet-50: #EFEDFF;
+  --color-violet-100: #DCD7FF;
+  --color-violet-200: #B9B0FF;
+  --color-violet-300: #9488FF;
+  --color-violet-400: #7B6CFF;
+  --color-violet-500: #6C5CE7;
+  --color-violet-600: #5849D9;
+  --color-violet-700: #463BB0;
+  --color-violet-800: #2E2680;
+}
+
+html, body, #root {
+  height: 100%;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
+}
+
+body {
+  margin: 0;
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+.leaflet-container {
+  background: #0B0B12;
+  font-family: var(--font-sans);
+}
+.leaflet-control-attribution {
+  background: rgba(11, 11, 18, 0.7) !important;
+  color: var(--color-text-3) !important;
+  backdrop-filter: blur(8px);
+  font-size: 10px !important;
+  border-radius: 6px;
+  padding: 2px 6px !important;
+}
+.leaflet-control-attribution a {
+  color: var(--color-text-2) !important;
+}
+
+.glow-violet {
+  box-shadow: 0 10px 30px -10px rgba(108, 92, 231, 0.55),
+              inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.bg-aurora {
+  background:
+    radial-gradient(800px 400px at 10% -10%, rgba(108, 92, 231, 0.18), transparent 60%),
+    radial-gradient(600px 400px at 110% 20%, rgba(60, 50, 180, 0.12), transparent 60%),
+    var(--color-bg);
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(0.8); opacity: 0.7; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+.pulse-ring {
+  animation: pulse-ring 2s ease-out infinite;
+}
